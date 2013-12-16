@@ -1,0 +1,32 @@
+<h1>Artist lookup</h1>
+<h3>Brought to you by MusicBrainz</h3>
+<h4>...and a significant donation from the Scooterlicious Foundation</h4>
+<form action="/" method="post">
+	<br>
+	Which technique would you like to use for this lookup?<br>
+	<input type="radio" name="technique" value="webapi" >Web API<br>
+	<input type="radio" name="technique" value="gemapi"checked>Gem API<br>
+	<br>
+	<input type="text" name="artist_name" placeholder="Artist Name"  />
+	<input type="submit" />
+</form>
+</br></br>
+
+<table>
+	<tr>
+		<th>Artist</th>
+		<th>Birthdate</th>
+		<th>Death</th>
+		<th>MusicBrainz ID</th>		
+	</tr>
+
+<% @all_historical_query_results.reverse_each do |artist| %> 
+	<tr>
+		<% artist_ar = artist.chomp.split(", ") %>
+		<td><%= artist_ar[0] %></td>
+		<td><%= artist_ar[1] %></td>
+		<td><%= artist_ar[2] %></td>
+		<td><%= artist_ar[3] %></td>
+	</tr>		
+<% end %>
+</table>
